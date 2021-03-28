@@ -17,29 +17,22 @@
 package com.example.compose.jetsurvey.survey
 
 import android.net.Uri
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
+import io.uniflow.android.AndroidDataFlow
+import io.uniflow.core.flow.actionOn
+import io.uniflow.core.flow.letOnState
 
 class SurveyViewModel(
     private val surveyRepository: SurveyRepository,
     private val photoUriManager: PhotoUriManager
-) : ViewModel() {
-
-    private val _uiState = MutableLiveData<SurveyState>()
-    val uiState: LiveData<SurveyState>
-        get() = _uiState
-
-    private lateinit var surveyInitialState: SurveyState
+) : AndroidDataFlow() {
 
     // Uri used to save photos taken with the camera
     private var uri: Uri? = null
 
     init {
-        viewModelScope.launch {
+        action {
             val survey = surveyRepository.getSurvey()
 
             // Create the default questions state based on the survey questions
@@ -54,15 +47,14 @@ class SurveyViewModel(
                     showDone = showDone
                 )
             }
-            surveyInitialState = SurveyState.Questions(survey.title, questions)
-            _uiState.value = surveyInitialState
+            setState(SurveyState.Questions(survey.title, questions))
         }
     }
 
-    fun computeResult(surveyQuestions: SurveyState.Questions) {
+    fun computeResult(surveyQuestions: SurveyState.Questions) = action {
         val answers = surveyQuestions.questionsState.mapNotNull { it.answer }
         val result = surveyRepository.getSurveyResult(answers)
-        _uiState.value = SurveyState.Result(surveyQuestions.surveyTitle, result)
+        setState(SurveyState.Result(surveyQuestions.surveyTitle, result))
     }
 
     fun onDatePicked(questionId: Int, date: String) {
@@ -82,9 +74,8 @@ class SurveyViewModel(
         }
     }
 
-    private fun updateStateWithActionResult(questionId: Int, result: SurveyActionResult) {
-        val latestState = _uiState.value
-        if (latestState != null && latestState is SurveyState.Questions) {
+    private fun updateStateWithActionResult(questionId: Int, result: SurveyActionResult) =
+        actionOn<SurveyState.Questions> { latestState ->
             val question =
                 latestState.questionsState.first { questionState ->
                     questionState.question.id == questionId
@@ -92,14 +83,11 @@ class SurveyViewModel(
             question.answer = Answer.Action(result)
             question.enableNext = true
         }
-    }
 
     private fun getLatestQuestionId(): Int? {
-        val latestState = _uiState.value
-        if (latestState != null && latestState is SurveyState.Questions) {
-            return latestState.questionsState[latestState.currentQuestionIndex].question.id
+        return letOnState { latestState: SurveyState.Questions ->
+            latestState.questionsState[latestState.currentQuestionIndex].question.id
         }
-        return null
     }
 }
 

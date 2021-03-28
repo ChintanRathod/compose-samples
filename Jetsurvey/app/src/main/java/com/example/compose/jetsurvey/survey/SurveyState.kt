@@ -21,6 +21,7 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import io.uniflow.core.flow.data.UIState
 
 @Stable
 class QuestionState(
@@ -34,7 +35,7 @@ class QuestionState(
     var answer by mutableStateOf<Answer<*>?>(null)
 }
 
-sealed class SurveyState {
+sealed class SurveyState : UIState() {
     data class Questions(
         @StringRes val surveyTitle: Int,
         val questionsState: List<QuestionState>

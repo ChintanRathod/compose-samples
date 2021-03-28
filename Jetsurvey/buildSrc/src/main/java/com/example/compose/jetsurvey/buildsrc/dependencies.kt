@@ -47,6 +47,12 @@ object Libs {
         const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
     }
 
+    object Uniflow {
+        private const val version = "1.0.4"
+        const val android = "org.uniflow-kt:uniflow-android:$version"
+        const val androidTest = "org.uniflow-kt:uniflow-android-test:$version"
+    }
+
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.2.0-rc01"
         const val coreKtx = "androidx.core:core-ktx:1.5.0-alpha01"

@@ -28,6 +28,7 @@ import androidx.fragment.app.viewModels
 import com.example.compose.jetsurvey.R
 import com.example.compose.jetsurvey.theme.JetsurveyTheme
 import com.google.android.material.datepicker.MaterialDatePicker
+import io.uniflow.android.livedata.states
 
 class SurveyFragment : Fragment() {
 
@@ -56,7 +57,7 @@ class SurveyFragment : Fragment() {
             )
             setContent {
                 JetsurveyTheme {
-                    viewModel.uiState.observeAsState().value?.let { surveyState ->
+                    viewModel.states.observeAsState().value?.let { surveyState ->
                         when (surveyState) {
                             is SurveyState.Questions -> SurveyQuestionsScreen(
                                 questions = surveyState,

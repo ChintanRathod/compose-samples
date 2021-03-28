@@ -35,6 +35,7 @@ plugins {
 subprojects {
     repositories {
         google()
+        mavenLocal()
         mavenCentral()
         jcenter()
 

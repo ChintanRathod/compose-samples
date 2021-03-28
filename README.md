@@ -13,6 +13,14 @@ You can clone this repository or import the
 project from Android Studio following the steps
 [here](https://developer.android.com/jetpack/compose/setup#sample).
 
+
+🦄 Uniflow
+------------
+The following projects are using Uniflow:
+
+- JetSurvey
+
+
 🧬 Samples
 ------------
 
@@ -22,7 +30,7 @@ project from Android Studio following the steps
 |  |  |
 |  <br><img src="readme/jetchat.png" alt="Jetchat" width="240"></img> <br><br>A sample chat app that focuses on UI state patterns and text input.<br><br>• Low complexity<br>• Simple Material Design theme (Light & dark)<br>• Resource loading<br>• Back button handling<br>• Integration with Architecture Components: Navigation, Fragments, LiveData, ViewModel<br>• Animation<br>• UI Testing<br><br>**[> Browse](Jetchat/)** <br><br> | <img src="readme/screenshots/Jetchat.png" width="320" alt="Jetchat sample demo">|
 |  |  |
-| <br><img src="readme/jetsurvey.png" alt="Jetsurvey" width="240"></img> <br><br>A sample survey app that showcases text input, validation and UI state management in Compose.<br><br>• Low complexity<br>• `TextField` and form validation<br>• Snackbar implementation<br>• Element reusability and styling<br>• Various form elements<br><br><br>**[> Browse](Jetsurvey/)** <br><br> | <img src="readme/screenshots/Jetsurvey.png" width="320" alt="Jetsurvey sample demo"> |
+| <br><img src="readme/jetsurvey.png" alt="Jetsurvey" width="240"></img> <br><br>A sample survey app that showcases text input, validation and UI state management in Compose.<br><br>• Low complexity<br>• `TextField` and form validation<br>• Snackbar implementation<br>• Element reusability and styling<br>• Various form elements<br>• Uniflow 🦄<br><br><br>**[> Browse](Jetsurvey/)** <br><br> | <img src="readme/screenshots/Jetsurvey.png" width="320" alt="Jetsurvey sample demo"> |
 |  |  |
 | <br><img src="readme/jetsnack.png" alt="Jetsnack" width="240"></img> <br><br>Jetsnack is a sample snack ordering app built with Compose.<br><br>• Medium complexity<br>• Custom design system<br>• Custom layouts<br>• Animation<br><br>**[> Browse](Jetsnack/)** <br><br>  | <img src="readme/screenshots/Jetsnack.png" width="320" alt="Jetsnack sample demo">|
 |  |  |

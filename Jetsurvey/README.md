@@ -13,6 +13,16 @@ Screenshots
 -----------
  <img src="screenshots/survey.gif" width="425"/>
 
+## Uniflow 🦄
+
+All ViewModels are extending the `AndroidDataFlow` type, to use the Uniflow API.
+
+- Setup Uniflow logger to log events/states
+- Navigation events are send as `NavigationEvent`. Fragments listening to events are using `onEvents`
+- `SurveyViewModel` emits states to be rendered to Compose. Just need to use the `states` from `AndroidDataFlow`, in `SurveyFragment`
+- `SurveyViewModel` uses `actionOn` guards, to run action on given state
+- Uniflow tests samples
+
 ## Features
 
 This sample contains several screens: a welcome screen, where the user can enter their email, sign in and sign up screens and a survey screen. The app has light and dark themes.

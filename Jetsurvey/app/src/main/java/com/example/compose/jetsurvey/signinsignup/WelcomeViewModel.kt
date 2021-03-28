@@ -16,32 +16,28 @@
 
 package com.example.compose.jetsurvey.signinsignup
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.compose.jetsurvey.Screen
 import com.example.compose.jetsurvey.Screen.SignIn
 import com.example.compose.jetsurvey.Screen.SignUp
 import com.example.compose.jetsurvey.Screen.Survey
-import com.example.compose.jetsurvey.util.Event
+import com.example.compose.jetsurvey.data.NavigationEvent
+import io.uniflow.android.AndroidDataFlow
 
-class WelcomeViewModel(private val userRepository: UserRepository) : ViewModel() {
+class WelcomeViewModel(private val userRepository: UserRepository) : AndroidDataFlow() {
 
-    private val _navigateTo = MutableLiveData<Event<Screen>>()
-    val navigateTo: LiveData<Event<Screen>> = _navigateTo
-
-    fun handleContinue(email: String) {
-        if (userRepository.isKnownUserEmail(email)) {
-            _navigateTo.value = Event(SignIn)
+    fun handleContinue(email: String) = action {
+        val event = if (userRepository.isKnownUserEmail(email)) {
+            NavigationEvent(SignIn)
         } else {
-            _navigateTo.value = Event(SignUp)
+            NavigationEvent(SignUp)
         }
+        sendEvent(event)
     }
 
-    fun signInAsGuest() {
+    fun signInAsGuest() = action {
         userRepository.signInAsGuest()
-        _navigateTo.value = Event(Survey)
+        sendEvent(NavigationEvent(Survey))
     }
 }
 

@@ -25,8 +25,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.compose.jetsurvey.R
 import com.example.compose.jetsurvey.Screen
+import com.example.compose.jetsurvey.data.NavigationEvent
 import com.example.compose.jetsurvey.navigate
 import com.example.compose.jetsurvey.theme.JetsurveyTheme
+import io.uniflow.android.livedata.onEvents
 
 /**
  * Fragment containing the sign up UI
@@ -40,9 +42,9 @@ class SignUpFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel.navigateTo.observe(viewLifecycleOwner) { navigateToEvent ->
-            navigateToEvent.getContentIfNotHandled()?.let { navigateTo ->
-                navigate(navigateTo, Screen.SignUp)
+        onEvents(viewModel) { event ->
+            when (event) {
+                is NavigationEvent -> navigate(event.screen, Screen.SignUp)
             }
         }
 

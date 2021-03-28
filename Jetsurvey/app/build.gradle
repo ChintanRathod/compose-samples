@@ -93,6 +93,9 @@ dependencies {
     implementation Libs.Kotlin.stdlib
     implementation Libs.Coroutines.android
 
+    implementation Libs.Uniflow.android
+    testImplementation Libs.Uniflow.androidTest
+
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appcompat
     implementation Libs.AndroidX.Navigation.fragment
