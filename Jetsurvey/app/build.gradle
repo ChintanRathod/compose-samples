@@ -94,6 +94,8 @@ dependencies {
     implementation Libs.Coroutines.android
 
     implementation Libs.Uniflow.android
+    testImplementation Libs.AndroidX.Test.coreTesting
+    testImplementation Libs.Uniflow.test
     testImplementation Libs.Uniflow.androidTest
 
     implementation Libs.AndroidX.coreKtx

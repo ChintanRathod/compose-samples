@@ -48,8 +48,9 @@ object Libs {
     }
 
     object Uniflow {
-        private const val version = "1.0.4"
+        private const val version = "1.0.5"
         const val android = "org.uniflow-kt:uniflow-android:$version"
+        const val test = "org.uniflow-kt:uniflow-test:$version"
         const val androidTest = "org.uniflow-kt:uniflow-android-test:$version"
     }
 
@@ -100,6 +101,7 @@ object Libs {
         object Test {
             private const val version = "1.2.0"
             const val core = "androidx.test:core:$version"
+            const val coreTesting = "androidx.arch.core:core-testing:$version"
             const val rules = "androidx.test:rules:$version"
 
             object Ext {

@@ -17,11 +17,19 @@ Screenshots
 
 All ViewModels are extending the `AndroidDataFlow` type, to use the Uniflow API.
 
-- Setup Uniflow logger to log events/states
-- Navigation events are send as `NavigationEvent`. Fragments listening to events are using `onEvents`
+Setup:
+- Setup Uniflow to log events/states [MainActivity](./app/src/java/com/example/compose/jetsurvey/MainActivity.kt)
+
+Events:
+- Navigation events are send as `NavigationEvent`. Fragments listening to events are using `onEvents`: [WelcomeViewModel](./app/src/java/com/example/compose/jetsurvey/signinsignup/WelcomeViewModel.kt)
+
+States Flow:
+[WelcomeViewModel](./app/src/java/com/example/compose/jetsurvey/survey/SurveyViewModel.kt)
 - `SurveyViewModel` emits states to be rendered to Compose. Just need to use the `states` from `AndroidDataFlow`, in `SurveyFragment`
 - `SurveyViewModel` uses `actionOn` guards, to run action on given state
-- Uniflow tests samples
+
+Tests samples
+- [Tests](./app/test/java/com/example/compose/jetsurvey/viewmodel/)
 
 ## Features
 
