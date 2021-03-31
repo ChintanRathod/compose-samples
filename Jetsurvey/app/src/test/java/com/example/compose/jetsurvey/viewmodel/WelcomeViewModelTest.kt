@@ -1,4 +1,4 @@
-package com.example.compose.jetsurvey.survey.viewmodel
+package com.example.compose.jetsurvey.viewmodel
 
 import com.example.compose.jetsurvey.Screen
 import com.example.compose.jetsurvey.data.NavigationEvent

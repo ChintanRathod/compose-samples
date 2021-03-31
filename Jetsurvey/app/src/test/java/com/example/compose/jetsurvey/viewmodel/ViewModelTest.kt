@@ -1,4 +1,4 @@
-package com.example.compose.jetsurvey.survey.viewmodel
+package com.example.compose.jetsurvey.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.uniflow.core.logger.DebugMessageLogger

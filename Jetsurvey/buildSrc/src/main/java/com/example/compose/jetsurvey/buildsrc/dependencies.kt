@@ -101,7 +101,6 @@ object Libs {
         object Test {
             private const val version = "1.2.0"
             const val core = "androidx.test:core:$version"
-            const val coreTesting = "androidx.arch.core:core-testing:$version"
             const val rules = "androidx.test:rules:$version"
 
             object Ext {
@@ -110,6 +109,7 @@ object Libs {
             }
 
             const val espressoCore = "androidx.test.espresso:espresso-core:3.2.0"
+            const val coreTesting = "androidx.arch.core:core-testing:2.1.0"
         }
     }
 }

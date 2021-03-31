@@ -20,16 +20,16 @@ All ViewModels are extending the `AndroidDataFlow` type, to use the Uniflow API.
 Setup:
 - Setup Uniflow to log events/states [`MainActivity`][2]
 
-Events:
-- Navigation events are send as `NavigationEvent`. Fragments listening to events are using `onEvents`: [WelcomeViewModel][5]
+Events & Navigation: [WelcomeViewModel][5],[SignInViewModel][6],[SignUpViewModel][7]
+- Navigation events are send as `NavigationEvent`.
+- Fragments listening to events are using `onEvents`
 
-States Flow:
-[SurveyViewModel][6]
-- `SurveyViewModel` emits states to be rendered to Compose. Just need to use the `states` from `AndroidDataFlow`, in `SurveyFragment`
-- `SurveyViewModel` uses `actionOn` guards, to run action on given state
+States Flow: [SurveyViewModel][8]
+- emits states to be rendered to Compose. Just need to use the `states` from `AndroidDataFlow`, in `SurveyFragment`
+- uses `actionOn` guards, to run action on given state
+- Fragment listening to events are using `states` property
 
-Tests samples
-- [Tests][7]
+Tests samples: [Tests][9]
 
 ## Features
 
@@ -47,8 +47,10 @@ The navigation between them uses the [Navigation library][3]. The screens and th
 [3]: https://developer.android.com/guide/navigation
 [4]: app/src/main/java/com/example/compose/jetsurvey/Navigation.kt
 [5]: app/src/main/java/com/example/compose/jetsurvey/signinsignup/WelcomeViewModel.kt
-[6]: app/src/main/java/com/example/compose/jetsurvey/survey/SurveyViewModel.kt
-[7]: app/src/test/java/com/example/compose/jetsurvey/viewmodel
+[6]: app/src/main/java/com/example/compose/jetsurvey/signinsignup/SignInViewModel.kt
+[7]: app/src/main/java/com/example/compose/jetsurvey/signinsignup/SignUpViewModel.kt
+[8]: app/src/main/java/com/example/compose/jetsurvey/survey/SurveyViewModel.kt
+[9]: app/src/test/java/com/example/compose/jetsurvey/viewmodel
 
 ### Sign in/sign up
 
